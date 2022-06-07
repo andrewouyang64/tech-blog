@@ -1,0 +1,39 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Tech Blog</title>
+    <link
+      href='https://fonts.googleapis.com/css2?family=Athiti&display=swap'
+      rel='stylesheet'
+    />
+    <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
+    <!--<link rel="stylesheet" type="text/css" href="/css/login.css">-->
+    <link rel='stylesheet' type='text/css' href='/css/style.css' />
+
+  </head>
+
+  <body>
+    <header>
+     <h1>The Tech Blog</h1>
+    </header>
+
+    <nav>
+      <a href='/'>Home</a>
+      {{#if loggedIn}}
+        <a href='#' id='logout'>Logout</a>
+      {{else}}
+        <a href='/login'>Login</a>
+      {{/if}}
+      <a href='/api/posts'>Library</a>
+    </nav>
+    <main>
+      {{{body}}}
+    </main>
+    {{#if loggedIn}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
+  </body>
+
+</html>
