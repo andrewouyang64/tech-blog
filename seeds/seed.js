@@ -16,7 +16,7 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  await Post.bulkCreate(bookData);
+  await Post.bulkCreate(postData);
 
   await Comment.bulkCreate(commentData);
 
