@@ -6,7 +6,7 @@ const commentHandler = async (event) => {
     const commentText = document.getElementById('comment-text').value.trim();
   
     //retrieve post_id from the URL by splitting to string and grabbing the final element from the array
-    const bookId = window.location.toString().split('/').pop();
+    const postId = window.location.toString().split('/').pop();
   
     const response = await fetch('/api/comments', {
       method: 'POST',
@@ -15,7 +15,7 @@ const commentHandler = async (event) => {
     });
   
     if (response.ok) {
-      // load the book's page again to display newly added comment
+      // load the blog's page again to display newly added comment
       document.location.replace(`/api/posts/${postId}`);
     } else {
       alert("Sorry! We couldn't add your comment!");

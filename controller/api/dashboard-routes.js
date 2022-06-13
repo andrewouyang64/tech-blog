@@ -1,15 +1,14 @@
 const router = require('express').Router();
-const { Dashboard } = require('../../models');
+const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // CREATE POST
 router.post('/', withAuth, async (req, res) => {
   try {
-    const { post_text, book_id } = req.body;
-    const postContent = await Dashboard.create({
+    const { post_text } = req.body;
+    const postContent = await Post.create({
       user_id: req.session.user_id,
-      comment_text,
-      book_id,
+      post_text,
     });
     res.status(200).json(postContent);
   } catch (error) {

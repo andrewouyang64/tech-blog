@@ -6,17 +6,17 @@ const addPostHandler = async (event) => {
     const postText = document.getElementById('post-text').value.trim();
   
     //retrieve post_id from the URL by splitting to string and grabbing the final element from the array
-    const userId = window.location.toString().split('/').pop();
+    //const userId = window.location.toString().split('/').pop();
   
     const response = await fetch('/api/posts', {
       method: 'POST',
-      body: JSON.stringify({ post_text: postText, user_id: userId }),
+      body: JSON.stringify({ post_text: postText }),
       headers: { 'Content-Type': 'application/json' },
     });
   
     if (response.ok) {
       // load the book's page again to display newly added comment
-      document.location.replace(`/api/posts/${userId}`);
+      document.location.replace(`/`);
     } else {
       alert("Sorry! We couldn't add your post!");
     }

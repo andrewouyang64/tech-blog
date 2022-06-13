@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, Dashboard } = require('../models');
+const { Post } = require('../models');
 
 // GET all posts for homepage
 router.get('/', async (req, res) => {
@@ -8,8 +8,14 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: content,
-          attributes: ['filename', 'description'],
+          attributes: ['id', 'title', 'user-id'],
         },
+
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        
       ],
     });
 
@@ -38,14 +44,23 @@ router.get('/post/:id', async (req, res) => {
       const dbPostData = await Post.findByPk(req.params.id, {
         include: [
           {
-            model: content,
             attributes: [
               'id',
               'title',
-              'comment',
+              'content',
               'user_id',
             ],
           },
+
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'user_id', 'post_id'],
+            include: {
+              model: User,
+              attributes: ['username'],
+            },
+          },
+         
         ],
       });
       const post = dbPostData.get({ plain: true });
