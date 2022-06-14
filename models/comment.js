@@ -13,7 +13,7 @@ Comment.init(
     },
     comment_text: {
       type: DataTypes.TEXT('long'),
-      allowNull: false, 
+      allowNull: true, 
     },
     
     user_id: {
