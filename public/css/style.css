@@ -31,11 +31,39 @@
 
   }
   
+
   main {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
+  .post-card {
+    background-color:#fff;
+    height: 140px
+    
+    
+  }
+
+  .post {
+    background-color:#13293d;
+    height: 120px;
+    padding: 3px;
+    border-bottom: 5px;
+    
+  }
+
+  .post-title {
+  background-color: #13293d;
+  color: #fff;
+  padding: 5px;
+  }
+
+  .post-content {
+    background-color: #d8a47f;
+    padding: 10px;
+    height: 80px;
+  }
+ 
   section {
     flex: 3;
     background-color: #fff;
@@ -56,6 +84,41 @@
     background: #13293d;
     color: #fff;
   }
+
+  /* submit, login and register form styling */
+form.add-comment,
+.signup,
+.login {
+  text-align: center;
+}
+
+.login-registration-title {
+  margin-bottom: 0.5rem;
+}
+
+/* adding flex-box to login and signup forms to center on page */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* colour and spacing for signup and login form */
+.signup-form,
+.login-form {
+  background-color: var(--green);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* make width of input fields 45viewport width, exclude the 'Remember Me' checkbox */
+input:not(#logcheck) {
+  width: 40vw;
+}
+
+.input-field {
+  margin: 0.5rem;
+}
   
   @media screen and (max-width: 768px) {
     /* Use flex-direction to stack the navbar, sidebar, and body */

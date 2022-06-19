@@ -32,7 +32,7 @@ Post.init(
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'comment',
+      model: 'comment',
         key: 'id',
       },
   },

@@ -1,27 +1,37 @@
 const router = require('express').Router();
-const { Post } = require('../models');
+const { Post, Comment, User } = require('../models');
 
 // GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
-      //include: [
+      attributes: [
+        'id',
+        'title',
+        'content',
+        'user_id',
+        'created_at'
+      ],
+      
+      include: [
         //{
-          //model: content,
-          //attributes: ['id', 'title', 'user-id'],
+          //model: Comment,
+          //attributes: ['id', 'title', 'user_id'],
         //},
 
-        //{
-          //model: User,
-          //attributes: ['username'],
-       // },
+        {
+          model: User,
+          attributes: ['id','username'],
+        },
         
-      //],
+      ],
     });
 
     const Posts = dbPostData.map((post) =>
       post.get({ plain: true })
     );
+
+    //console.log('here is posts details.......' + Posts)
 
     res.render('homepage', {
       Posts,
@@ -53,8 +63,8 @@ router.get('/post/:id', async (req, res) => {
           },
 
           {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'user_id', 'post_id'],
+            //model: Comment,
+            //attributes: ['id', 'comment_text', 'user_id', 'post_id'],
             include: {
               model: User,
               attributes: ['username'],
@@ -64,7 +74,7 @@ router.get('/post/:id', async (req, res) => {
         ],
       });
       const post = dbPostData.get({ plain: true });
-      res.render('post-content', { postContent, loggedIn: req.session.loggedIn });
+      res.render('add-comment', { post, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

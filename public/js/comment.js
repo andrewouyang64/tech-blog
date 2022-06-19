@@ -5,9 +5,6 @@ const commentHandler = async (event) => {
     //get text from the comment text area and trim trailing spaces
     const commentText = document.getElementById('comment-text').value.trim();
   
-    //retrieve post_id from the URL by splitting to string and grabbing the final element from the array
-    const postId = window.location.toString().split('/').pop();
-  
     const response = await fetch('/api/comments', {
       method: 'POST',
       body: JSON.stringify({ comment_text: commentText, post_id: postId }),

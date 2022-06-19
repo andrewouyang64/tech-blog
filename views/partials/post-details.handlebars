@@ -1,4 +1,8 @@
-<div>
-    <p>{{title}}</p>
-    <p>{{content}}</p>
+<div class="post-card">
+    <div class="post">
+        <span class="post-title" ><a class="post-title" href="/post/:id">{{title}}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posted by  
+        {{user.username}} on {{createdAt}}</span>
+        <p class="post-content">{{content}}</p>
+    </div>
 </div>
+
