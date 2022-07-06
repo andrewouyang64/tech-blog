@@ -52,8 +52,19 @@
     
   }
 
-  .post-title {
+  .add-comment {
   background-color: #13293d;
+  color: #fff;
+  padding: 5px;
+  text-decoration: none;
+  }
+  
+  .add-comment:hover {
+    color: #d8a47f;
+  }
+
+  .post-title {
+    background-color: #13293d;
   color: #fff;
   padding: 5px;
   }
@@ -113,7 +124,7 @@ form.add-comment,
 
 /* make width of input fields 45viewport width, exclude the 'Remember Me' checkbox */
 input:not(#logcheck) {
-  width: 40vw;
+  width: 20vw;
 }
 
 .input-field {

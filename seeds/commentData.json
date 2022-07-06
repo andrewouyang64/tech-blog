@@ -1,8 +1,8 @@
 [
     {
       "id": 1,
-  "comment_text" : "Disagree!",
-  "user_id" : 1,
+  "comment_text" : "MVC is cool!",
+  "user_id" : 2,
   "post_id" : 1
     },
     {
@@ -28,5 +28,12 @@
   "comment_text" : "Need to test out to confirm",
   "user_id" : 4,
   "post_id" : 3
+    },
+
+    {
+      "id": 6,
+  "comment_text" : "I feel MVC is a bit complicated",
+  "user_id" : 4,
+  "post_id" : 1
     }
   ]
