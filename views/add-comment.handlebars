@@ -3,21 +3,23 @@
         <div class="tech-blog">
             <div class="previousComment">
                
-               <p>{{post.title}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posted by&nbsp; {{post.user.username}} on &nbsp;{{formatDate post.createdAt}}</p>
-               <p>{{post.content}}</p>
+               <p class="title-comment">{{post.title}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posted by&nbsp; {{post.user.username}} on &nbsp;{{formatDate post.createdAt}}</p>
+               <p class="content-comment">{{post.content}}</p>
+               <p> Comments</p>
                {{#each post.comments as |comment|}}
-               <p>{{comment.comment_text}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commented by&nbsp;{{comment.user.username}}&nbsp;on&nbsp;{{formatDate comment.createdAt}}</p>
+               <p class="comments">{{comment.comment_text}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commented by&nbsp;{{comment.user.username}}&nbsp;on&nbsp;{{formatDate comment.createdAt}}</p>
                 {{/each}}
                
                     
-                <div class="comment">
-                    <!--form class="add-comment"-->
+                <div >
+                    {{!-- <form class="add-comment"> --}}
                         
-                        <textarea name="content" id="comment-text" cols="70" rows="4"></textarea>
+                        <textarea name="content" id="comment-text" cols="70" rows="4"
+                        placeholder="Write your comment here..."></textarea>
                            <div class="form-group">
-                                <button class="btn btn-comment add-comment" >Submit</button>
+                                <button class="btn btn-comment add-comment" value={{post.id}} >Submit</button>
                             </div>
-                    <!--/form-->
+                    {{!-- </form> --}}
             </div>
         </div>
 </section>

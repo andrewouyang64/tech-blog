@@ -1,14 +1,12 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comment, User, Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // CREATE COMMENT
-router.post('/', withAuth, async (req, res) => {
-  console.log("My log ==============")
+
+router.post('/',withAuth, async (req, res) => {
   try {
     const { comment_text, post_id } = req.body;
-    console.log('My log==========' + comment_text);
-    console.log('My log==========' +post_id);
     const commentData = await Comment.create({
       user_id: req.session.user_id,
       comment_text,
@@ -21,6 +19,7 @@ router.post('/', withAuth, async (req, res) => {
     console.error(error);
   }
 });
+
 
 //Updating comments
 router.put('/:id', withAuth, (req, res) => {
@@ -64,7 +63,7 @@ router.put('/:id', withAuth, (req, res) => {
          });
          return;
        }
-       res.json(commentData);
+       res.json('Comment has been deleted successfuly');
      })
      .catch((err) => {
        console.log(err);

@@ -2,21 +2,19 @@
 const addPostHandler = async (event) => {
     event.preventDefault();
   
-    //get post-text from the post area and trim trailing spaces
-    const postText = document.getElementById('post-text').value.trim();
-  
-    //retrieve post_id from the URL by splitting to string and grabbing the final element from the array
-    //const userId = window.location.toString().split('/').pop();
-  
+    //get post title and content from the post input area and trim trailing spaces
+    const postTitle = document.getElementById('title').value.trim();
+    const postContent = document.getElementById('content').value.trim();
+    
     const response = await fetch('/api/posts', {
       method: 'POST',
-      body: JSON.stringify({ post_text: postText }),
+      body: JSON.stringify({ content: postContent, title: postTitle }),
       headers: { 'Content-Type': 'application/json' },
     });
   
     if (response.ok) {
-      // load the book's page again to display newly added comment
-      document.location.replace(`/`);
+      // load the home page again to display newly added post
+      document.location.replace('/');
     } else {
       alert("Sorry! We couldn't add your post!");
     }

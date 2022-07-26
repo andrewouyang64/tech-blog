@@ -14,11 +14,7 @@ router.get('/', async (req, res) => {
       ],
       
       include: [
-        //{
-          //model: Comment,
-          //attributes: ['id', 'title', 'user_id'],
-        //},
-
+      
         {
           model: User,
           attributes: ['id','username'],
@@ -31,8 +27,6 @@ router.get('/', async (req, res) => {
       post.get({ plain: true })
     );
 
-    //console.log('here is posts details.......' + Posts)
-
     res.render('homepage', {
       Posts,
       loggedIn: req.session.loggedIn,
@@ -43,42 +37,24 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 // GET one post
-router.get('/post/:id', async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
+router.get('/posts/:id', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
     // If the user is logged in, allow them to view post
     try {
       const dbPostData = await Post.findByPk(req.params.id, {
-        //include: [
-        //   {
-        //     attributes: [
-        //       'id',
-        //       'title',
-        //       'content',
-        //       'user_id',
-        //     ],
-        //   },
-
-        include: [
+        
+      include: [
           User,
           {
             model: Comment,
             include: [User],
           },
         ],
-          // {
-          //   model: Comment,
-          //   attributes: ['id', 'comment_text', 'user_id', 'post_id'],
-          //   include: {
-          //     model: User,
-          //     attributes: ['username'],
-          //   },
-          // },
          
-        //],
       });
       const post = dbPostData.get({ plain: true });
       console.log(post);
@@ -91,6 +67,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 
+// Login
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -100,6 +77,8 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+
+// Sign up
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -116,8 +95,7 @@ router.get('/post', (req, res) => {
     return;
   }
 //Render creating post page
-  res.render('dashboard');
+  res.render('add-post');
 });
-
 
 module.exports = router;

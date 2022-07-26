@@ -52,9 +52,30 @@
     
   }
 
+  .title-comment {
+    background-color: #13293d;
+    color: #fff;
+    padding: 5px;
+   
+  }
+
+  .content-comment {
+    border: 3px;
+    border-color: #13293d;
+    border-style: solid;
+    padding: 5px;
+    position: relative;
+    bottom: 20px;
+  }
+  .comments {
+    background-color: #d8a47f;
+    color: #13293d;
+    padding: 10px;
+  }
+
   .add-comment {
   background-color: #13293d;
-  color: #fff;
+  color:#fff;
   padding: 5px;
   text-decoration: none;
   }
@@ -143,12 +164,12 @@ input:not(#logcheck) {
     }
     /* Change the header background */
     header {
-      background: #772014;
+      background-color: #13293d;
     }
     /* Change the navbar and footer background */
     nav,
     footer {
-      background-color: #bb8588;
+      background-color: #d8a47f;;
     }
   }
   
